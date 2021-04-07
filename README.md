@@ -11,4 +11,4 @@ sort algorithm coding with C/JAVA/PYTHON.
 
 Console program to display the sort phase and result.
 
-[![Console](https://github.com/gangdong/sort-algos/screenshot.PNG)
+![Console](https://github.com/gangdong/sort-algos/screenshot.PNG)
