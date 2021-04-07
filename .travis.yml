@@ -8,15 +8,7 @@ script:
 - ls c/ -la
 - ldd c/main
 after_success:
-- tree
-- ssh -T git@github.com
-- git config user.name "${USER}"
-- git config user.email "${EMAIL}"
-- git add -A
-- ls -la
-- ls c/ -la
-- git commit -m "travis_ci update origin master -> aedf5e5"
-- git push --force "https://${DEPLOY_TOKEN}@${REPO_REF}" master:master
+
 branches:
   only:
   - master
