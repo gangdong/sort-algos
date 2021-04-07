@@ -8,7 +8,7 @@ script:
 - ls c/ -la
 - ldd c/main
 after_success:
-
+- echo "build succeed!"
 branches:
   only:
   - master
