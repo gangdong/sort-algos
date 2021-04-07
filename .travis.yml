@@ -1,0 +1,33 @@
+os: linux
+arch: arm64-graviton2
+language: c
+
+before_install:
+
+install: 
+
+script:
+- gcc -lm c/main.c -o c/main
+- ldd main
+
+#deploy:
+#  provider: script
+#  skip_cleanup: true
+#  script: bash scripts/deploy.sh
+#  on:
+#    branch: dev
+after_success:
+- ls -la
+
+# branch whitelist, 
+branches:
+  only:
+  - main
+  - master     # monitor master branch
+  - dev        # monitor dev branch
+addons: ssh_known_hosts:daviddong.github.io
+# caching bundler gem packages will speed up b
+cache: bundler
+# Optional: enable email notifications about the outcome of your builds
+notifications:
+  email: true
