@@ -7,7 +7,7 @@ before_install:
 install: 
 
 script:
-- gcc -lm c/main.c -o c/main
+- gcc c/main.c -lm -o c/main -Wall
 - ldd c/main
 
 #deploy:
