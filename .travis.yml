@@ -9,6 +9,7 @@ script:
 - ldd c/main
 after_success:
 - echo "build succeed!"
+- echo "commit id -> 774a070"
 branches:
   only:
   - master
