@@ -1,46 +1,31 @@
 os: linux
 arch: arm64-graviton2
 language: c
-
-before_install:
-
+before_install: 
 install: 
-
 script:
 - gcc c/main.c -lm -o c/main -Wall
 - ls c/ -la
 - ldd c/main
-
-#deploy:
-#  provider: script
-#  skip_cleanup: true
-#  script: bash scripts/deploy.sh
-#  on:
-#    branch: dev
 after_success:
 - tree
-# check the connection to host
 - ssh -T git@github.com
-
-# add user account
 - git config user.name "${USER}"
 - git config user.email "${EMAIL}"
-
-# git add & commit
 - git add -A
-- ls -la 
-- ls c/ -la 
+- ls -la
+- ls c/ -la
 - git commit -m "travis_ci update origin master -> aedf5e5"
 - git push --force "https://${DEPLOY_TOKEN}@${REPO_REF}" master:master
-# branch whitelist, 
 branches:
   only:
   - main
-  - master     # monitor master branch
-  - dev        # monitor dev branch
+  - master
+  - dev
 addons: ssh_known_hosts:daviddong.github.io
-# caching bundler gem packages will speed up b
 cache: bundler
-# Optional: enable email notifications about the outcome of your builds
 notifications:
   email: true
+env:
+  global:
+    secure: iQew9eAgyfKHMrO1KdvOww6s8pQBi4MuJbby5pn9cyrkhg7JfyX2NueoTRKrq26Qmdgqkc4yVhHlvHl6ozCs8Iv1D0NuQmK7UoyfSUbDXbfbl4xyfNzc2dXwIY6XJIaUqnnD6EFntMjqzTG1F5L2qiv1KcFAZQo5xwso96Y/yTYF7UQd1QRY0sV9EeWjXJWKycMjk28a9vcopieEzST5R4h2hN2yBCsSmMef4kdsjLFz34emlnk3r0EBRyW+o17IkqMNYFVGW3VBy19k34A7DQzb1nwPd34ZIBSIvEtQ6EivuIc27Bm5QzxYiaC2SNW7neb6MHRSqnmzx0InXTD4cjLxnevRaf7KAhva5sFqDiaR03aGm5PFWbZx+JqeMM4KWOPHWAG962Ud3Hhr/S7xrE4Lj5MSBf7NpC2jP0txXJVtJilvBl+zc6JHKy0rz1Y9C3bUPwrguvT+fKOmkpzHkqoMwrwOXDUtcuUyFSH8UaffBmKREfN8x3rYHBjIEG1zZ/a+kREpQXPmv4/wNSN1a9b7PFLhYv+glYA4mVE8I9K4IBm6YqHkqZcHhtfhXRTfBn1soFJAdB6TI0T8ftoZTtRET6rdEGY0p1bwpzujbLqMxvuCZb62qsPEx69X9s8GKbjC49+0qW4VtNOzpYpCg5GXg9PGtkOhB+mahri5xLQ=
