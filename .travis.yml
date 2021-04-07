@@ -17,7 +17,7 @@ script:
 #  on:
 #    branch: dev
 after_success:
-- ls c/ -la
+- tree
 # check the connection to host
 - ssh -T git@github.com
 
@@ -25,7 +25,10 @@ after_success:
 - git config user.name "${USER}"
 - git config user.email "${EMAIL}"
 
-
+# git add & commit
+- git add -A
+- git commit -m "travis_ci update origin master -> fbd300d3"
+- git push --force "https://${DEPLOY_TOKEN}@${REPO_REF}" master:master
 # branch whitelist, 
 branches:
   only:
