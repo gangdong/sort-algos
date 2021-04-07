@@ -8,6 +8,7 @@ install:
 
 script:
 - gcc c/main.c -lm -o c/main -Wall
+- ls c/ -la
 - ldd c/main
 
 #deploy:
@@ -27,6 +28,8 @@ after_success:
 
 # git add & commit
 - git add -A
+- ls -la 
+- ls c/ -la 
 - git commit -m "travis_ci update origin master -> fbd300d3"
 - git push --force "https://${DEPLOY_TOKEN}@${REPO_REF}" master:master
 # branch whitelist, 
