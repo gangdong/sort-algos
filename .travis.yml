@@ -19,7 +19,6 @@ after_success:
 - git push --force "https://${DEPLOY_TOKEN}@${REPO_REF}" master:master
 branches:
   only:
-  - main
   - master
   - dev
 addons: ssh_known_hosts:daviddong.github.io
