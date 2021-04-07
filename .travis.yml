@@ -17,7 +17,14 @@ script:
 #  on:
 #    branch: dev
 after_success:
-- ls -la
+- ls c/ -la
+# check the connection to host
+- ssh -T git@github.com
+
+# add user account
+- git config user.name "${USER}"
+- git config user.email "${EMAIL}"
+
 
 # branch whitelist, 
 branches:
