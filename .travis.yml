@@ -8,7 +8,7 @@ install:
 
 script:
 - gcc -lm c/main.c -o c/main
-- ldd main
+- ldd c/main
 
 #deploy:
 #  provider: script
