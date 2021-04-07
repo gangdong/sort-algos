@@ -48,6 +48,7 @@ public final class sortAlgorithm {
         a[j] = temp;
     }
 
+	/* bubble sort*/
     private static void sort_bubble(int[] a, int len) {
 
         for (int i = 0; i < len - 1; i++) {
